@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        .alert{
-            background-color: coral;
-            border: 3px solid black;
-            color: crimson;
-            width: 80%;
-            height: 10%;
+        .primary {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            margin-bottom: 10em;
             text-align: center;
+            width: 50%;
+
+        }
+
+        .secondary {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            text-align: center;
+            width: 50%;
         }
     </style>
 </head>
+
 <body>
 
     <div id="app">
-        <titre></titre>
-        <card></card>
-        <titre></titre>
-        <card></card>
+        <alert message="Ceci est un message d'alerte" type="alert-primary" classe="primary"></alert>
+        <alert message="Ceci est un message de succès" type="alert-secondary" classe="secondary"></alert>
     </div>
-    
-    
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-        Vue.component('card',{
-            template : `<div class="alert">A simple danger alert—check it out!</div>`
+        Vue.component('alert', {
+            template: `<div type="alert" :class="classe">
+                            {{message}}
+                        </div> `,
+            props: ['message', 'type', 'classe']
         })
 
-        Vue.component('titre' ,{
-            template : `<h1>HelloGuys</h1>`
-        })
 
         let app = new Vue({
-            el:'#app'
+            el: '#app'
         })
     </script>
-    
+
 </body>
+
 </html>
